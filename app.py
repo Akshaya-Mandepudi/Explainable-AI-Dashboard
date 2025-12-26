@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from lime.lime_tabular import LimeTabularExplainer
 
 # --------------------------------------------------
-# 🌈 PAGE CONFIG
+#  PAGE CONFIG
 # --------------------------------------------------
 st.set_page_config(
     page_title="Explainable AI Dashboard",
@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# 🎨 CUSTOM CSS (CENTERED & PREMIUM UI)
+#  CUSTOM CSS (CENTERED & PREMIUM UI)
 # --------------------------------------------------
 st.markdown("""
 <style>
@@ -77,7 +77,7 @@ section[data-testid="stFileUploader"] {
 """, unsafe_allow_html=True)
 
 # --------------------------------------------------
-# 🧠 CENTERED TITLE
+#  CENTERED TITLE
 # --------------------------------------------------
 st.markdown(
     """
@@ -92,7 +92,7 @@ st.markdown(
 )
 
 # --------------------------------------------------
-# 📦 LOAD MODEL & DATA
+#  LOAD MODEL & DATA
 # --------------------------------------------------
 model = joblib.load("model/rf_model.pkl")
 shap_explainer = joblib.load("model/shap_explainer.pkl")
@@ -106,7 +106,7 @@ lime_explainer = LimeTabularExplainer(
 )
 
 # --------------------------------------------------
-# 📤 FILE UPLOADER (CENTERED)
+#  FILE UPLOADER (CENTERED)
 # --------------------------------------------------
 st.markdown('<div class="card" style="text-align:center;">📂 <b>Upload CSV File</b></div>', unsafe_allow_html=True)
 uploaded_file = st.file_uploader("", type=["csv"])
@@ -115,7 +115,7 @@ if uploaded_file is not None:
     data = pd.read_csv(uploaded_file)
 
     # --------------------------------------------------
-    # 📊 UPLOADED DATA
+    #  UPLOADED DATA
     # --------------------------------------------------
     st.markdown('<div class="card">📊 <b>Uploaded Data</b></div>', unsafe_allow_html=True)
     st.dataframe(data, use_container_width=True)
@@ -130,7 +130,7 @@ if uploaded_file is not None:
     st.dataframe(input_data, use_container_width=True)
 
     # --------------------------------------------------
-    # ✅ MODEL PREDICTIONS
+    #  MODEL PREDICTIONS
     # --------------------------------------------------
     predictions = model.predict(input_data)
 
@@ -149,7 +149,7 @@ if uploaded_file is not None:
             )
 
     # --------------------------------------------------
-    # 🔍 SHAP EXPLANATION (GLOBAL)
+    #  SHAP EXPLANATION (GLOBAL)
     # --------------------------------------------------
     st.markdown('<div class="card">🔎 <b>SHAP – Global Feature Importance</b></div>', unsafe_allow_html=True)
 
@@ -166,7 +166,7 @@ if uploaded_file is not None:
     st.pyplot(fig)
 
     # --------------------------------------------------
-    # 🧩 LIME EXPLANATION (LOCAL)
+    #  LIME EXPLANATION (LOCAL)
     # --------------------------------------------------
     st.markdown('<div class="card">🧩 <b>LIME – Local Explanation (First Instance)</b></div>', unsafe_allow_html=True)
 
@@ -186,7 +186,7 @@ if uploaded_file is not None:
     st.dataframe(lime_df, use_container_width=True)
 
 # --------------------------------------------------
-# 🎉 FOOTER
+#   FOOTER
 # --------------------------------------------------
 st.markdown(
     """

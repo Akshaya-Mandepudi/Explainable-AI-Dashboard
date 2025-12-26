@@ -22,5 +22,5 @@ explanation = lime_explainer.explain_instance(
     num_features=5
 )
 
-print("✅ LIME explanation generated successfully!")
+print("LIME explanation generated successfully!")
 print(explanation.as_list())
